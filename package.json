@@ -1,0 +1,40 @@
+{
+  "name": "webcomponentsproject",
+  "version": "1.0.0",
+  "description": "CLI to generate vanilla javascript web components projects",
+  "main": "bin/index.js",
+  "scripts": {},
+  "keywords": [
+    "cli",
+    "javascript",
+    "vanilla",
+    "web component"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "webc": "./bin/index.js"
+  },
+  "author": "RFCM",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pepe-Guerrra/webComponentsProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pepe-Guerrra/webComponentsProject/issues"
+  },
+  "homepage": "https://github.com/Pepe-Guerrra/webComponentsProject",
+  "files": [
+    "src",
+    "bin",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "commander": "^8.3.0",
+    "esm": "^3.2.25"
+  }
+}
