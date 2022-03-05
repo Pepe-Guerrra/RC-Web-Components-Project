@@ -15,7 +15,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "webc": "./bin/index.js"
+    "rc": "./bin/index.js"
   },
   "author": "RFCM",
   "license": "MIT",
@@ -34,7 +34,9 @@
     "README.md"
   ],
   "dependencies": {
+    "arg": "^5.0.1",
     "commander": "^8.3.0",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.0"
   }
 }
