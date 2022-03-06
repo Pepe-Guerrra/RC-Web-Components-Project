@@ -7,7 +7,6 @@ export async function validationsProject(options) {
   const now = Date.now(); //Devuelve el valor en milisegundos que representa el tiempo transcurrido desde el Epoch.
 
   async function promptForMissingOptions(options) {
-
     // pregunta el nombre del proyecto en caso de no estar
     const projectNameQuestion = [];
     if (!options.name) {
@@ -18,7 +17,6 @@ export async function validationsProject(options) {
         default:'myProject'+now,
       });
     }
-
     // espera la respuesta
     const projectNameAnswer = await inquirer.prompt(projectNameQuestion);
     // bandera --yes para no hacer mas preguntas
@@ -39,14 +37,13 @@ export async function validationsProject(options) {
         default: false,
       });
     }
-
+    // espera la respuesta y los agrega a las opciones
     const answers = await inquirer.prompt(questions);
     return {
       ...options,
       name: options.name || projectNameAnswer.projectName,
       git: options.git || answers.git,
     };
-
   }
 
   options = await promptForMissingOptions(options);
@@ -55,19 +52,18 @@ export async function validationsProject(options) {
   }
 
   createStructureProject(options);
-  
-  async function gitInit(){
-    exec('git init',(error,stdout,stderr)=>{
-      if (error) {
-          console.log(error);
-      }
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return;
-      }
-      console.log(`Status:\n${stdout}`);
-    })
-  };
-
   console.log(options);
 }
+
+async function gitInit(){
+  exec('git init',(error,stdout,stderr)=>{
+    if (error) {
+        console.log(error);
+    }
+    if (stderr) {
+      console.error(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`Status:\n${stdout}`);
+  })
+};
