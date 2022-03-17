@@ -25,7 +25,6 @@ export async function createStructureProject(options){
       writePakageJson(streamPakageJson, options);
       writeViteConfig(streamViteConfig);
       //.eslintrc.json ??????
-      console.log('las carpetas fueron creadas con Exito');
     })
     .catch((err)=>{
       console.log(err);
@@ -73,6 +72,7 @@ function writePakageJson(streamPakageJson, options){
     streamPakageJson.write(`  "version": "${options.version}",\n`);
     streamPakageJson.write(`  "description": "${options.description}",\n`);
     streamPakageJson.write(`  "main": "${options.entryPoint}",\n`);
+    streamPakageJson.write('  "type": "module",\n');
     streamPakageJson.write('  "scripts": {\n');
     streamPakageJson.write('    "dev": "vite",\n');
     streamPakageJson.write('    "build": "vite build",\n');
@@ -82,10 +82,10 @@ function writePakageJson(streamPakageJson, options){
     streamPakageJson.write('  "keywords": [\n');
     keywords.forEach((element,index) => {
       if (index == (keywords.length - 1)) {
-        keywords.forEach((element) => { streamPakageJson.write(`    "${element}"\n`); });
+        streamPakageJson.write(`    "${element}"\n`);
         return;
       }
-      keywords.forEach((element) => { streamPakageJson.write(`    "${element}",\n`); });
+      streamPakageJson.write(`    "${element}",\n`);
     });
     streamPakageJson.write('  ],\n');
     streamPakageJson.write('  "engines": {\n');

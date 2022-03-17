@@ -1,8 +1,11 @@
 import fs from "fs";
 
-export async function importStatement(componentName){
-
-  const str = `import "./components/${componentName}/${componentName}.js";`;
+export async function importStatement(componentName,joint){
+  let str;
+  joint
+  ? str = `import "./components/${componentName}.js";`
+  : str = `import "./components/${componentName}/${componentName}.js";`
+  
   fs.closeSync(fs.openSync('./src/components/components.js','a'))
   fs.readFile('./src/components/components.js',(err, data)=>{
     if (err) throw err;

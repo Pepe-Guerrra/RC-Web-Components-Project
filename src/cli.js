@@ -1,7 +1,5 @@
-import { scriptsOption } from "./scripts/consoleScripts/scriptsOptions.js";
-import { scriptsQuestions } from "./scripts/consoleScripts/scriptsQuestions";
+import { scriptsOptions } from "./scripts/consoleScripts/scriptsOptions";
 
 export function cli(args) {
-  //scriptsOption();
-  scriptsQuestions(args);
+  scriptsOptions(args);
 }
