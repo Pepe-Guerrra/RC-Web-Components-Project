@@ -36,6 +36,7 @@
   "dependencies": {
     "arg": "^5.0.1",
     "esm": "^3.2.25",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.1",
+    "ora": "^6.1.0"
   }
 }

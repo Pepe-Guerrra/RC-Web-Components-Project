@@ -1,9 +1,11 @@
-import inquirer from 'inquirer';
+import inquirer from "inquirer";
 import { exec } from "child_process";
 import { createStructureProject } from "../projectScripts/createStructure.js";
+import logUpdate from 'log-update';
+
 
 export async function validationsProject(options) {
-  const path0 = process.cwd()
+  const path0 = process.cwd();
   options = await promptForMissingOptions(options);
   createStructureProject(options)
   .then(()=>{
@@ -34,16 +36,30 @@ async function gitInit(projectName,path0){
 };
 
 async function runInstall(projectName,path0){
+
+  const interval = 80;
+	const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+  let i = 0 ;
+
+  const spiner = setInterval(()=>{
+    const frame = frames[ i++ % frames.length ];
+    logUpdate(frame + ' ==> Install dependencies')
+  },interval);
+
   exec(`cd ${path0}\\${projectName} && npm install`,(error,stdout,stderr)=>{
     if (error) {
         console.log(error);
+        
     }
     if (stderr) {
       console.error(`stderr: ${stderr}`);
+      
       return;
     }
     console.log(`Status:\n${stdout}`);
+    
   })
+
 };
 
 async function promptForMissingOptions(options) {

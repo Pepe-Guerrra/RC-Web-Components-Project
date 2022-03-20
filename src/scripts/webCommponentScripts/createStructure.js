@@ -20,17 +20,16 @@ function jointComponent(name) {
     console.log(`\x1b[31m the web component already exists \x1b[0m`);
     return;
   };
-  /* fs.promises.mkdir(`./src/${name}`, { recursive: true })
-    .then(()=>{
-      importStatement(name,true);
-    })
-    .then(()=>{
-      createJointComponent(name);
-      console.log(`${name} component was created`);
-    })
-    .catch((err)=>{
-      console.log(err);
-    }) */
+  importStatement(name,true)
+  .then(()=>{
+  createJointComponent(name);
+  })
+  .then(()=>{
+    console.log(`${name} component was created`);
+  })
+  .catch((err)=>{
+    console.log(`\x1b[31m${err.message}\x1b[0m`);
+  })
 };
 
 function unjointedComponent(name) {
@@ -39,7 +38,7 @@ function unjointedComponent(name) {
     console.log(`\x1b[31m the web component already exists \x1b[0m`);
     return;
   };
-  /* fs.promises.mkdir(`./src/components/${name}`, { recursive: true })
+  fs.promises.mkdir(`./src/components/${name}`, { recursive: true })
     .then(()=>{
       importStatement(name,false);
     })
@@ -48,7 +47,7 @@ function unjointedComponent(name) {
       console.log(`${name} component was created`);
     })
     .catch((err)=>{
-      console.log(err);
-    }) */
+      console.log(err.mssage);
+    })
 };
 

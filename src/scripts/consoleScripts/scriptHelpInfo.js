@@ -25,6 +25,8 @@ export async function helpInfo(){
                                             The script will create a web component "<component-name></component-name>" in a folder "componentName".
                                         2)  If the --joint flag is added, a "componentName" web component will be created with the style
                                             sheet integrated into the javascript module.\x1B[0m
+    \x1B[1;34m - Grouped options:\x1B[0m \n
+                                          \x1B[35mGrouped options are also supported, so you can write -gi instead of -g -i.\x1B[0m
   `);
   return;
 }
