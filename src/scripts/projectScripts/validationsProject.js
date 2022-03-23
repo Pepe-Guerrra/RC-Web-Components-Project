@@ -21,6 +21,13 @@ export async function validationsProject(options) {
   .then(()=>{
     if (options.runInstall) {
       runInstall(options.name,path0);
+      /*
+      Done. Now run:
+
+  cd raul-Fer 
+  npm install 
+  npm run dev 
+      */
     }
   });
   

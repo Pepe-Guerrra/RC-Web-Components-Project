@@ -47,13 +47,13 @@ function writeHtml(streamHtml, options) {
     streamHtml.write('    <meta charset="UTF-8">\n');
     streamHtml.write('    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n');
     streamHtml.write('    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n');
-    streamHtml.write('    <link rel="stylesheet" href="index.css">\n');
+    streamHtml.write('    <link rel="stylesheet" href="./index.css">\n');
     streamHtml.write(`    <title>${options.name}</title>\n`);
     streamHtml.write('  </head>\n');
     streamHtml.write('  <body>\n');
     streamHtml.write('    \n');
-    streamHtml.write('    <script type="module" src="/index.js"></script>\n');
-    streamHtml.write('    <script type="module" src="components/components.js"></script>\n');
+    streamHtml.write('    <script type="module" src="./index.js"></script>\n');
+    streamHtml.write('    <script type="module" src="./components/components.js"></script>\n');
     streamHtml.write('  </body>\n');
     streamHtml.write('</html>\n');
     streamHtml.end();
@@ -71,7 +71,6 @@ function writePakageJson(streamPakageJson, options){
     streamPakageJson.write(`  "version": "${options.version}",\n`);
     streamPakageJson.write(`  "description": "${options.description}",\n`);
     streamPakageJson.write(`  "main": "${options.entryPoint}",\n`);
-    streamPakageJson.write('  "type": "module",\n');
     streamPakageJson.write('  "scripts": {\n');
     streamPakageJson.write('    "dev": "vite",\n');
     streamPakageJson.write('    "build": "vite build",\n');

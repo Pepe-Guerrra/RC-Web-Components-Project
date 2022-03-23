@@ -34,7 +34,7 @@ export async function createJointComponent(componentName) {
     stream.write('\n');
     stream.write('  render(){\n');
     stream.write('    this.shadowRoot.innerHTML = /* HTML */`\n');
-    stream.write('    <style>${componentName.styles}</style>\n');
+    stream.write(`    <style>${componentName}.styles</style>\n`);
     stream.write('      <div>\n');
     stream.write('\n');        
     stream.write('      </div>\n');

@@ -25,7 +25,7 @@ export async function scriptsOptions(rawArgs){
       return;
     }
     if (options.version) {
-      console.log(color.green(`Version:${ver}`));
+      console.log(color.green(`Version: ${ver}`));
       return;
     }
     console.log(color.yellow('No se reconoce el comando ')+color.red(`"${rawArgs[2]}"`));
