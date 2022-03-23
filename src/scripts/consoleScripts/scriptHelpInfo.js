@@ -3,7 +3,7 @@
 export async function helpInfo(){
   console.log(`\n \x1B[1;32m***  HELP Info.  ***\x1B[0m`);
   console.log(`
-    \x1B[1;34m - Flags:\x1B[0m \n
+    \u001b[1;34m - Flags:\x1B[0m \n
       \x1B[34m--help or -h \x1B[0m    ==>  \x1B[35m Display Help Options.\x1B[0m
       \x1B[34m--version or -v \x1B[0m ==>  \x1B[35m Display CLI version.\x1B[0m
       \x1B[34m--git or -g \x1B[0m     ==>  \x1B[35m (Only for command "new")Create an empty Git repository without asking.\x1B[0m

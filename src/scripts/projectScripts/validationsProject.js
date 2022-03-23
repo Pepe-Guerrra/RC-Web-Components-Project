@@ -1,12 +1,17 @@
 import inquirer from "inquirer";
+import fs from "fs";
 import { exec } from "child_process";
 import { createStructureProject } from "../projectScripts/createStructure.js";
-import logUpdate from 'log-update';
+import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
 
 export async function validationsProject(options) {
   const path0 = process.cwd();
   options = await promptForMissingOptions(options);
+  if (fs.existsSync(`./${options.name}`)) {
+    console.log(`${color.yellow('The ')}${color.red(options.name)}${color.yellow(' project already exists')}`);
+    return;
+  }
   createStructureProject(options)
   .then(()=>{
     if (options.git) {
@@ -14,7 +19,6 @@ export async function validationsProject(options) {
     }
   })
   .then(()=>{
-    console.log('las carpetas fueron creadas con Exito');
     if (options.runInstall) {
       runInstall(options.name,path0);
     }
@@ -25,39 +29,32 @@ export async function validationsProject(options) {
 async function gitInit(projectName,path0){
   exec(`cd ${path0}\\${projectName} && git init`,(error,stdout,stderr)=>{
     if (error) {
-        console.log(error);
+      process.stdout.clearLine(0);
+      process.stdout.write(`${logSymbols.error} - ${color.red(error)}\n`)
     }
     if (stderr) {
-      console.error(`stderr: ${stderr}`);
+      process.stdout.clearLine(0);
+      process.stdout.write(`${logSymbols.error} - ${color.red(stderr)}\n`)
       return;
     }
-    console.log(`Status:\n${stdout}`);
+    process.stdout.write(color.green(`${logSymbols.success} - ${color.green(stdout)}`));
   })
 };
 
 async function runInstall(projectName,path0){
-
-  const interval = 80;
-	const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
-  let i = 0 ;
-
-  const spiner = setInterval(()=>{
-    const frame = frames[ i++ % frames.length ];
-    logUpdate(frame + ' ==> Install dependencies')
-  },interval);
-
+  spin().start('installing dependencies, please wait...');
   exec(`cd ${path0}\\${projectName} && npm install`,(error,stdout,stderr)=>{
     if (error) {
-        console.log(error);
-        
+      process.stdout.clearLine(0);
+      process.stdout.write(`${logSymbols.error} - ${color.red(error)}\n`)
     }
     if (stderr) {
-      console.error(`stderr: ${stderr}`);
-      
+      process.stdout.clearLine(0);
+      process.stdout.write(`${logSymbols.error} - ${color.red(stderr)}\n`)
       return;
     }
-    console.log(`Status:\n${stdout}`);
-    
+    spin().end(color.green('Dependencies were installed successfully'))
+    process.stdout.write(color.blue(`Status:\n${stdout}`));
   })
 
 };

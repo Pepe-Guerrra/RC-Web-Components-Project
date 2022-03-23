@@ -3,6 +3,7 @@ import { validationsProject } from "../projectScripts/validationsProject.js"
 import { validationsComponent } from "../webCommponentScripts/validationsComponent.js";
 import { helpInfo } from "./scriptHelpInfo.js";
 import { version } from "../../../package.json";
+import { color, logSymbols } from "../supportFeature/spin.js";
 
 const ver = version
 
@@ -24,12 +25,12 @@ export async function scriptsOptions(rawArgs){
       return;
     }
     if (options.version) {
-      console.log(`\x1b[32m Version:${ver} \x1b[0m`);
+      console.log(color.green(`Version:${ver}`));
       return;
     }
-    console.log(`\x1b[32m No se reconoce el comando \x1b[31m"${rawArgs[2]}"\x1b[0m`);
+    console.log(color.yellow('No se reconoce el comando ')+color.red(`"${rawArgs[2]}"`));
   } catch (err) {
-    console.log(`\x1b[31m${err.message}\x1b[0m`);
+    console.log(color.red(`${err.message}`));
   }
 }
 

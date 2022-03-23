@@ -1,11 +1,8 @@
 import fs from "fs";
+import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
 export async function createStructureProject(options){
-  
-  if (fs.existsSync(`./${options.name}`)) {
-    console.log(`The ${options.name} project already exists`);
-    return;
-  }else{
+    spin().start(color.blue('creating file/folder structure...'));
     await fs.promises.mkdir(`./${options.name}`, { recursive: true });
     await fs.promises.mkdir(`./${options.name}/src`, { recursive: true });
     await fs.promises.mkdir(`./${options.name}/src/components`, { recursive: true });
@@ -26,11 +23,13 @@ export async function createStructureProject(options){
       writeViteConfig(streamViteConfig);
       //.eslintrc.json ??????
     })
-    .catch((err)=>{
-      console.log(err);
+    .then(()=>{
+      spin().end(color.green('structure created successfully'))
     })
-  }
-
+    .catch((err)=>{
+      process.stdout.clearLine(0);
+      process.stdout.write(`${logSymbols.error} - ${color.red(err)}\n`)
+    })
 }
 
 function KeysArray(keysStrin) {

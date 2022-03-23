@@ -2,6 +2,7 @@ import fs from "fs";
 import { createUnjointedComponent } from "./writeUnjointedComponent.js";
 import { createJointComponent } from "./writeJointComponent.js";
 import { importStatement } from "./importStatement.js";
+import { color, logSymbols } from "../supportFeature/spin.js";
 
 
 
@@ -17,7 +18,7 @@ export async function addFolder(options){
 function jointComponent(name) {
   console.log('jointComponent '+name);
   if (fs.existsSync(`./src/components/${name}.js`)) {
-    console.log(`\x1b[31m the web component already exists \x1b[0m`);
+    console.log(`${logSymbols.error} - ${color.red('the web component already exists')}`);
     return;
   };
   importStatement(name,true)
@@ -25,17 +26,17 @@ function jointComponent(name) {
   createJointComponent(name);
   })
   .then(()=>{
-    console.log(`${name} component was created`);
+    console.log(`${logSymbols.success} - ${color.blue(name)} ${color.green('component was created')}`);
   })
   .catch((err)=>{
-    console.log(`\x1b[31m${err.message}\x1b[0m`);
+    console.log(`${color.red(err.message)}`);
   })
 };
 
 function unjointedComponent(name) {
   console.log('unjointedComponent '+name);
   if (fs.existsSync(`./src/components/${name}`)) {
-    console.log(`\x1b[31m the web component already exists \x1b[0m`);
+    console.log(`${logSymbols.error} - ${color.red('the web component already exists')}`);
     return;
   };
   fs.promises.mkdir(`./src/components/${name}`, { recursive: true })
@@ -44,10 +45,12 @@ function unjointedComponent(name) {
     })
     .then(()=>{
       createUnjointedComponent(name);
-      console.log(`${name} component was created`);
+    })
+    .then(()=>{
+      console.log(`${logSymbols.success} - ${color.blue(name)} ${color.green('component was created')}`);
     })
     .catch((err)=>{
-      console.log(err.mssage);
+      console.log(`${color.red(err.message)}`);
     })
 };
 

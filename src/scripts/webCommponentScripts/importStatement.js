@@ -1,4 +1,5 @@
 import fs from "fs";
+import { color } from "../supportFeature/spin.js";
 
 export async function importStatement(componentName,joint){
   let str;
@@ -14,7 +15,7 @@ export async function importStatement(componentName,joint){
     let texto = text.join("\n");
     fs.writeFile('./src/components/components.js', texto,(err)=>{
       if (err) throw err;
-      console.log(`Component ${componentName} was imported to components.js Module`);
+      console.log(`${color.green('Component')} ${color.blue(componentName)} ${color.green('was imported to components.js Module')}`);
     });
   });
 

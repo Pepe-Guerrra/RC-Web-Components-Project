@@ -1,5 +1,6 @@
 import { addFolder } from "./createStructure.js";
 import inquirer from 'inquirer';
+import { color } from "../supportFeature/spin.js";
 
 export async function validationsComponent(options) {
   options = await promptForMissingOptions(options);
@@ -9,13 +10,15 @@ export async function validationsComponent(options) {
   }
 }
 
-const errorMsg = (`\x1b[31m
-  The correct syntax must be in camel case format
+const errorMsg = color.red(`
+  SYNTAX ERROR:
+
+  the web component name must be in camelCase format
   example:
           =>  rc c componentName
                         or
           =>  rc component componentName
-\x1b[0m`);
+`);
 
 async function promptForMissingOptions(options) {
   const question = [];
