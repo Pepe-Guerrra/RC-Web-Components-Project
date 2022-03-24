@@ -21,13 +21,6 @@ export async function validationsProject(options) {
   .then(()=>{
     if (options.runInstall) {
       runInstall(options.name,path0);
-      /*
-      Done. Now run:
-
-  cd raul-Fer 
-  npm install 
-  npm run dev 
-      */
     }
   });
   
@@ -62,13 +55,20 @@ async function runInstall(projectName,path0){
     }
     spin().end(color.green('Dependencies were installed successfully'))
     process.stdout.write(color.blue(`Status:\n${stdout}`));
+    process.stdout.write(color.yellow(`
+      Done. Now run:
+
+      cd raul-Fer
+      npm run dev
+    `))
   })
 
 };
 
+// create the necessary questions to build the project
 async function promptForMissingOptions(options) {
-  const now = Date.now(); //Devuelve el valor en milisegundos que representa el tiempo transcurrido desde el Epoch.
-  const projectNameQuestion = [];// pregunta el nombre del proyecto en caso de no estar
+  const now = Date.now(); //Returns the number of milliseconds since 00:00:00 UTC on January 1, 1970.
+  const projectNameQuestion = [];// ask the name of the project in case it is not
   const questions = [];
 
   if (!options.name) {

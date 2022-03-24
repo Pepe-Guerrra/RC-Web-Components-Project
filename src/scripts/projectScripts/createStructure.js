@@ -1,6 +1,7 @@
 import fs from "fs";
 import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
+// create the folder and file structure for the web project if it does NOT exist
 export async function createStructureProject(options){
     spin().start(color.blue('creating file/folder structure...'));
     await fs.promises.mkdir(`./${options.name}`, { recursive: true });
@@ -9,7 +10,6 @@ export async function createStructureProject(options){
     await fs.promises.mkdir(`./${options.name}/asset`, { recursive: true });
     await fs.promises.mkdir(`./${options.name}/public`, { recursive: true })
     .then(()=>{
-      // crear los archivos
       fs.createWriteStream(`./${options.name}/src/index.css`);
       fs.createWriteStream(`./${options.name}/src/index.js`);
       fs.createWriteStream(`./${options.name}/src/components/components.js`);
@@ -21,7 +21,6 @@ export async function createStructureProject(options){
       writeHtml(streamHtml, options);
       writePakageJson(streamPakageJson, options);
       writeViteConfig(streamViteConfig);
-      //.eslintrc.json ??????
     })
     .then(()=>{
       spin().end(color.green('structure created successfully'))
@@ -64,7 +63,6 @@ function writePakageJson(streamPakageJson, options){
   streamPakageJson.once('open', function(fd) {
     const keywords = KeysArray(options.keywords);
     const gitRepository = options.gitRepository.replace('.git','');
-
     streamPakageJson.write('{\n');
     streamPakageJson.write(`  "name": "${options.packageName}",\n`);
     streamPakageJson.write('  "private": true,\n');
