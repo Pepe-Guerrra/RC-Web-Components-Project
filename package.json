@@ -1,5 +1,5 @@
 {
-  "name": "webcomponentsproject",
+  "name": "rcwebcomponentsproject",
   "version": "0.16.7",
   "description": "CLI to generate vanilla javascript web components projects",
   "main": "bin/index.js",
