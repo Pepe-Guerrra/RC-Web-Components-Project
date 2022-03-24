@@ -4,8 +4,8 @@ import { color } from "../supportFeature/spin.js";
 export async function importStatement(componentName,joint){
   let str;
   joint
-  ? str = `import "./components/${componentName}.js";`
-  : str = `import "./components/${componentName}/${componentName}.js";`
+  ? str = `import "./${componentName}.js";`
+  : str = `import "./${componentName}/${componentName}.js";`
   
   fs.closeSync(fs.openSync('./src/components/components.js','a'))
   fs.readFile('./src/components/components.js',(err, data)=>{
