@@ -58,7 +58,7 @@ async function runInstall(projectName,path0){
     process.stdout.write(color.yellow(`
       Done. Now run:
 
-      cd raul-Fer
+      cd ${projectName}
       npm run dev
     `))
   })
