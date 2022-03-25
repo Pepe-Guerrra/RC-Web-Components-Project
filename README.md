@@ -16,7 +16,7 @@ I Try to make this Project with as few dependencies as possible.
 ## Install
 
   ```cmd
-  $ npm install -g rcwebcomponentsproject
+  $ npm install -g rc-web-components-project
   ```
 
 ## Usage (create new project)
