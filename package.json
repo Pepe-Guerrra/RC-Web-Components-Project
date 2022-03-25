@@ -1,5 +1,5 @@
 {
-  "name": "rcwebcomponentsproject",
+  "name": "rc-web-components-project",
   "version": "0.12.1",
   "description": "CLI to generate vanilla javascript web components projects",
   "main": "bin/index.js",
@@ -21,12 +21,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pepe-Guerrra/webComponentsProject.git"
+    "url": "https://github.com/Pepe-Guerrra/RC-Web-Components-Project.git"
   },
   "bugs": {
-    "url": "https://github.com/Pepe-Guerrra/webComponentsProject/issues"
+    "url": "https://github.com/Pepe-Guerrra/RC-Web-Components-Project/issues"
   },
-  "homepage": "https://github.com/Pepe-Guerrra/webComponentsProject",
+  "homepage": "https://github.com/Pepe-Guerrra/RC-Web-Components-Project",
   "files": [
     "src",
     "bin",
