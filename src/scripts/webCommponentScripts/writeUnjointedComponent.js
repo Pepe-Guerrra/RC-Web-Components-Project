@@ -11,6 +11,7 @@ export async function createUnjointedComponent(componentName) {
   
   // Create the text inside the file
   stream.once('open', function(fd) {
+    stream.write(`import styles from './${componentName}.css';\n`);
     stream.write('\n');
     stream.write('\n');
     stream.write(`class ${componentName} extends HTMLElement {\n`);
@@ -26,7 +27,7 @@ export async function createUnjointedComponent(componentName) {
     stream.write('\n');
     stream.write('  render(){\n');
     stream.write('    this.shadowRoot.innerHTML = /* HTML */`\n');
-    stream.write(`      <style>@import './components/${componentName}/${componentName}.css';</style>\n`);
+    stream.write('      <style>${styles}</style>\n');
     stream.write('      <div>\n');
     stream.write('\n');        
     stream.write('      </div>\n');
