@@ -11,7 +11,7 @@ I Try to make this Project with as few dependencies as possible.
 
 [ESM](https://github.com/standard-things/esm): The brilliantly simple, babel-less, bundle-less ECMAScript module loader.
 
-[COMANDER.JS](https://github.com/tj/commander.js#command-arguments): The complete solution for node.js command-line interfaces.
+[INQUIRER.js](https://github.com/SBoudrias/Inquirer.js): The complete solution for node.js command-line interfaces.
 
 ## Install
 
