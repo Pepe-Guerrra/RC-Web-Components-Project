@@ -39,7 +39,6 @@ function generalOptions(rawArgs){
     {
       '--git': Boolean,
       '--yes': Boolean,
-      '--install': Boolean,
       '--joint': Boolean,
       '--help': Boolean,
       '--version':Boolean,
