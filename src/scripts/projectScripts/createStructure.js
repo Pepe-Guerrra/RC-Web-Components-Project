@@ -105,7 +105,6 @@ function writePakageJson(streamPakageJson, options){
     streamPakageJson.write('    "README.md"\n');
     streamPakageJson.write('  ],\n');
     streamPakageJson.write('  "devDependencies": {\n');
-    streamPakageJson.write('    "vite": "^2.8.0"\n');
     streamPakageJson.write('  }\n');
     streamPakageJson.write('}\n');
     streamPakageJson.end();

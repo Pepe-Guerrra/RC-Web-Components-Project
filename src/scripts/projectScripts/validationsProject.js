@@ -5,13 +5,27 @@ import { createStructureProject } from "../projectScripts/createStructure.js";
 import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
 
+
+/*
+borrar archivos 
+Usando fs.unlinkSync, que sería de forma síncrona:
+ejemplo: fs.unlinkSync('./old-article.md')
+Usando fs.unlink, que sería asíncrono:
+ejemplo: fs.unlink('./old-article.md')
+El método fs.rmdir() se usa para eliminar un directorio en la ruta dada
+*/
+
 export async function validationsProject(options) {
+
+  const so = process.platform
   const path0 = process.cwd();
+
   options = await promptForMissingOptions(options);
   if (fs.existsSync(`./${options.name}`)) {
     console.log(`${color.yellow('The ')}${color.red(options.name)}${color.yellow(' project already exists')}`);
     return;
   }
+  console.log(so);
   createStructureProject(options)
   .then(()=>{
     if (options.git) {
@@ -43,10 +57,10 @@ async function gitInit(projectName,path0){
 
 async function runInstall(projectName,path0){
   spin().start('installing dependencies, please wait...');
-  exec(`cd ${path0}\\${projectName} && npm install`,(error,stdout,stderr)=>{
+  exec(`cd ${path0}\\${projectName} && npm install vite@latest`,(error,stdout,stderr)=>{
     if (error) {
       process.stdout.clearLine(0);
-      process.stdout.write(`${logSymbols.error} - ${color.red(error)}\n`)
+      process.stdout.write(` npm error ${logSymbols.error} - ${color.red(error)}\n`)
     }
     if (stderr) {
       process.stdout.clearLine(0);
