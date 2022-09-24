@@ -45,7 +45,6 @@ function generalOptions(rawArgs){
       '--version':Boolean,
       '-g': '--git',
       '-y': '--yes',
-      '-i': '--install',
       '-j': '--joint',
       '-h': '--help',
       '-v': '--version'
@@ -58,7 +57,6 @@ function generalOptions(rawArgs){
     joint: args['--joint'] || false,
     help: args['--help'] || false,
     version: args['--version'] || false,
-    runInstall: args['--install'] || false,
     commandName: args._[0],
     name: args._[1],
   };
@@ -80,6 +78,6 @@ function projecOption(options){
 }
 
 function componentOptions(options) {
-  const { help, version, git, skipPrompts, runInstall, commandName,...updateOpt } = options;
+  const { help, version, git, skipPrompts, commandName,...updateOpt } = options;
   return updateOpt;
 } 

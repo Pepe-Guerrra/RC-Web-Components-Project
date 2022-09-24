@@ -4,17 +4,6 @@ import { exec } from "child_process";
 import { createStructureProject } from "../projectScripts/createStructure.js";
 import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
-
-
-/*
-borrar archivos 
-Usando fs.unlinkSync, que sería de forma síncrona:
-ejemplo: fs.unlinkSync('./old-article.md')
-Usando fs.unlink, que sería asíncrono:
-ejemplo: fs.unlink('./old-article.md')
-El método fs.rmdir() se usa para eliminar un directorio en la ruta dada
-*/
-
 export async function validationsProject(options) {
 
   const so = process.platform
@@ -33,9 +22,7 @@ export async function validationsProject(options) {
     }
   })
   .then(()=>{
-    if (options.runInstall) {
       runInstall(options.name,path0);
-    }
   });
   
 }
@@ -150,21 +137,12 @@ async function promptForMissingOptions(options) {
     message: 'License ?',
     default: 'ISC',   
   });
-  if (!options.runInstall) {
-    questions.push({
-      type: 'confirm',
-      name: 'runInstall',
-      message: 'Do you want the dependencies to be installed?',
-      default: false,
-    });
-  };
   
   // espera la respuesta y los agrega a las opciones
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
     git: options.git || answers.git,
-    runInstall: options.runInstall || answers.runInstall,
     name: options.name || projectNameAnswer.projectName,
     packageName: options.name || projectNameAnswer.projectName,
     version: options.version || answers.version,

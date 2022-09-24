@@ -8,7 +8,6 @@ export async function helpInfo(){
       \x1B[34m--version or -v \x1B[0m ==>  \x1B[35m Display CLI version.\x1B[0m
       \x1B[34m--git or -g \x1B[0m     ==>  \x1B[35m (Only for command "new")Create an empty Git repository without asking.\x1B[0m
       \x1B[34m--yes or -y \x1B[0m     ==>  \x1B[35m (Only for command "new")Create a project with the default options, it only asks for the name of the project.\x1B[0m
-      \x1B[34m--install or -i \x1B[0m ==>  \x1B[35m (Only for command "new")Install all dependencies automatically.\x1B[0m
       \x1B[34m--joint or -j \x1B[0m   ==>  \x1B[35m (Only for command "Component")Integrate the style sheet of the Web Component to its javascript module.\x1B[0m \n
     \x1B[1;34m - Commands:\x1B[0m \n
       \x1B[34mnew or n \x1B[0m          ==>  \x1B[35m Create a new project.\x1B[0m
