@@ -28,7 +28,7 @@ export async function validationsProject(options) {
 }
 
 async function gitInit(projectName,path0){
-  exec(`cd ${path0}\\${projectName} && git init`,(error,stdout,stderr)=>{
+  exec(`cd ${path0}/${projectName} && git init`,(error,stdout,stderr)=>{
     if (error) {
       process.stdout.clearLine(0);
       process.stdout.write(`${logSymbols.error} - ${color.red(error)}\n`)
@@ -44,7 +44,7 @@ async function gitInit(projectName,path0){
 
 async function runInstall(projectName,path0){
   spin().start('installing dependencies, please wait...');
-  exec(`cd ${path0}\\${projectName} && npm install vite@latest`,(error,stdout,stderr)=>{
+  exec(`cd ${path0}/${projectName} && npm install vite@latest`,(error,stdout,stderr)=>{
     if (error) {
       process.stdout.clearLine(0);
       process.stdout.write(` npm error ${logSymbols.error} - ${color.red(error)}\n`)
