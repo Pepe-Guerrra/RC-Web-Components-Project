@@ -1,8 +1,9 @@
 {
   "name": "rc-web-components-project",
-  "version": "0.12.7",
+  "version": "0.14.7",
   "description": "CLI to generate vanilla javascript web components projects",
   "main": "bin/index.js",
+  "type": "module",
   "scripts": {},
   "keywords": [
     "cli",
@@ -34,8 +35,8 @@
     "README.md"
   ],
   "dependencies": {
-    "arg": "^5.0.1",
-    "esm": "^3.2.25",
-    "inquirer": "^8.2.1"
+    "arg": "^5.0.2",
+    "inquirer": "^9.1.2",
+    "npm-check-updates": "^16.3.2"
   }
 }

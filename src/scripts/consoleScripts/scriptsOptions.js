@@ -2,12 +2,10 @@ import arg from 'arg';
 import { validationsProject } from "../projectScripts/validationsProject.js"
 import { validationsComponent } from "../webCommponentScripts/validationsComponent.js";
 import { helpInfo } from "./scriptHelpInfo.js";
-import { version } from "../../../package.json";
 import { color, logSymbols } from "../supportFeature/spin.js";
 
-const ver = version
 
-export async function scriptsOptions(rawArgs){
+export async function scriptsOptions(rawArgs, ver){
   try {
     const options = generalOptions(rawArgs);
     if (options.commandName == 'n' || options.commandName == 'new') {
@@ -79,4 +77,4 @@ function projecOption(options){
 function componentOptions(options) {
   const { help, version, git, skipPrompts, commandName,...updateOpt } = options;
   return updateOpt;
-} 
+}

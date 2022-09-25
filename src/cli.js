@@ -1,5 +1,7 @@
-import { scriptsOptions } from "./scripts/consoleScripts/scriptsOptions";
+import { scriptsOptions } from "./scripts/consoleScripts/scriptsOptions.js";
+import fs from "fs";
 
 export function cli(args) {
-  scriptsOptions(args);
+  const info = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  scriptsOptions(args, info.version);
 }

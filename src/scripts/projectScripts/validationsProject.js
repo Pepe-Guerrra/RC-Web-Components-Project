@@ -6,7 +6,7 @@ import { spin, color, logSymbols } from "../supportFeature/spin.js";
 
 export async function validationsProject(options) {
 
-  const so = process.platform
+  //const so = process.platform
   const path0 = process.cwd();
 
   options = await promptForMissingOptions(options);
@@ -14,7 +14,6 @@ export async function validationsProject(options) {
     console.log(`${color.yellow('The ')}${color.red(options.name)}${color.yellow(' project already exists')}`);
     return;
   }
-  console.log(so);
   createStructureProject(options)
   .then(()=>{
     if (options.git) {
