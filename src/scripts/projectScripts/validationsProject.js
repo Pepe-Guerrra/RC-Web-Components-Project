@@ -27,7 +27,7 @@ export async function validationsProject(options) {
 }
 
 async function gitInit(projectName,path0){
-  exec(`cd ${path0}/${projectName} && git init`,(error,stdout,stderr)=>{
+  exec(`cd ${path0}/${projectName} && git init --initial-branch=master`,(error,stdout,stderr)=>{
     if (error) {
       process.stdout.clearLine(0);
       process.stdout.write(`${logSymbols.error} - ${color.red(error)}\n`)
